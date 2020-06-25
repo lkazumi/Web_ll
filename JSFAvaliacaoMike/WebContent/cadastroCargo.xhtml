@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:p="http://primefaces.org/ui" >
+<h:head>
+	<title>Cadastro Cargo</title>
+</h:head>
+<h:body>
+	<h:form>
+	   <p:menubar>
+             <p:submenu label="Menu">
+		        <p:menuitem value="Menu" outcome="menu" />
+		     </p:submenu>
+		
+			<p:submenu label="Cadastro">
+			    <p:menuitem value="Cargo" outcome="cadastroCargo.xhtml" />
+			    <p:menuitem value="Funcionario" outcome="cadastroFuncionario.xhtml" />
+			</p:submenu>
+			
+			<p:submenu label="lista">
+				<p:menuitem value="Listagem de Cargos" outcome="listaCargo.xhtml" />
+				<p:menuitem value="Listagem de Funcionarios" outcome="listaFuncionario.xhtml" />
+			</p:submenu>
+			
+		</p:menubar>
+		<h1>Cadastro de Cargo</h1>
+		<p:growl />
+		<p:panelGrid columns="2">
+
+			<h:outputText value="Cargo: *" />
+			 <p:inputText
+				value="#{cargoControllerMike.car.cargo}"
+				required="true"
+			    requiredMessage="Campo Cargo não preenchido!" >	    		
+               <f:validateLength maximum="50" /> 
+			 </p:inputText>	
+	        								
+	        <p:commandButton value="Salvar" 
+				             action="#{cargoControllerMike.salvar}" 
+				             ajax="false" />		
+			<p:commandButton value="Limpar" 
+				             action="cadastroCargo.xhtml"
+		                     actionListener="#{cargoControllerMike.limparCampos}"
+		    	             immediate="true"
+				    	     ajax="false" />		
+		 </p:panelGrid>
+	                                                                                                        
+	   </h:form>	
+
+     </h:body>      
+ </html>
+
